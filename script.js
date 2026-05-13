@@ -405,4 +405,24 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('cart-sidebar').addEventListener('click', (e) => {
         e.stopPropagation();
     });
+
+    // Navegação entre abas
+    document.querySelectorAll('.nav-tab').forEach(tab => {
+        tab.addEventListener('click', (e) => {
+            const tabName = e.target.dataset.tab;
+
+            // Remove active de todos os tabs
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            // Adiciona active ao tab clicado
+            e.target.classList.add('active');
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+
+            // Fecha o carrinho se estiver aberto
+            if (isCartOpen) {
+                closeCart();
+            }
+        });
+    });
 });

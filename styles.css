@@ -87,6 +87,39 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 0.5px;
 }
 
+/* Navigation Tabs */
+.nav-tabs {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.nav-tab {
+    background-color: transparent;
+    color: var(--color-white);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 1rem;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.nav-tab:hover {
+    border-bottom-color: var(--color-whatsapp);
+}
+
+.nav-tab.active {
+    border-bottom-color: var(--color-whatsapp);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex: 1;
+    justify-content: flex-end;
+}
+
 .search-box {
     flex: 1;
     display: flex;
@@ -748,5 +781,303 @@ h1, h2, h3, h4, h5, h6 {
     .btn-whatsapp {
         padding: 12px 16px;
         font-size: 0.95rem;
+    }
+
+    .nav-tabs {
+        flex-basis: 100%;
+        order: 3;
+        margin-top: var(--spacing-sm);
+    }
+
+    .nav-tab {
+        flex: 1;
+        text-align: center;
+    }
+}
+
+/* ============================================
+   TAB CONTENT
+   ============================================ */
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ============================================
+   INSTITUTIONAL SECTION
+   ============================================ */
+
+.institucional {
+    padding: var(--spacing-lg) var(--spacing-md);
+}
+
+.institucional-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.institucional-header h2 {
+    font-size: 2.2rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.institucional-header .subtitle {
+    font-size: 1.1rem;
+    color: var(--color-secondary);
+}
+
+.institucional-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.institucional-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-light-gray);
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.institucional-card:hover {
+    box-shadow: var(--box-shadow-hover);
+    transform: translateY(-4px);
+}
+
+.institucional-card h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.3rem;
+}
+
+.institucional-card p {
+    color: var(--color-secondary);
+    line-height: 1.8;
+}
+
+.institucional-card.highlight {
+    background: linear-gradient(135deg, var(--color-primary), #2a5a7a);
+    color: var(--color-white);
+    border: none;
+}
+
+.institucional-card.highlight h3,
+.institucional-card.highlight p {
+    color: var(--color-white);
+}
+
+.pillars-section {
+    margin-bottom: var(--spacing-lg);
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pillars-section h3 {
+    text-align: center;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.8rem;
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+}
+
+.pillar {
+    background-color: var(--color-white);
+    border: 2px solid var(--color-light-gray);
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.pillar:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--box-shadow);
+}
+
+.pillar-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.pillar h4 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.1rem;
+}
+
+.pillar p {
+    color: var(--color-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.certifications-section {
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.certifications-section h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.5rem;
+}
+
+.certifications-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.cert-badge {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.contact-section {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-light-gray);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    box-shadow: var(--box-shadow);
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-section h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+}
+
+.contact-item {
+    padding: var(--spacing-md);
+    border-right: 1px solid var(--color-light-gray);
+}
+
+.contact-item:last-child {
+    border-right: none;
+}
+
+.contact-item strong {
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: var(--spacing-sm);
+}
+
+.contact-item a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+    color: var(--color-primary-dark);
+}
+
+/* Responsive for Institutional */
+@media (max-width: 1199px) {
+    .institucional-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pillars-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-item {
+        border-right: none;
+        border-bottom: 1px solid var(--color-light-gray);
+        padding-bottom: var(--spacing-md);
+    }
+
+    .contact-item:nth-child(odd) {
+        border-right: 1px solid var(--color-light-gray);
+    }
+
+    .contact-item:last-child,
+    .contact-item:nth-last-child(2) {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .institucional {
+        padding: var(--spacing-md);
+    }
+
+    .institucional-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .pillars-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-item {
+        border-right: none;
+        border-bottom: 1px solid var(--color-light-gray);
+        padding-bottom: var(--spacing-md);
+    }
+
+    .contact-item:last-child {
+        border-bottom: none;
+    }
+
+    .certifications-list {
+        gap: 8px;
+    }
+
+    .cert-badge {
+        padding: 6px 12px;
+        font-size: 0.85rem;
     }
 }

@@ -13,26 +13,135 @@
             <div class="logo">
                 <h1>HCF</h1>
             </div>
-            <div class="search-box">
-                <input type="text" placeholder="Buscar produtos..." class="search-input">
-                <button class="search-btn">🔍</button>
-            </div>
-            <div class="cart-icon-container">
-                <button class="cart-icon" id="cart-btn">
-                    🛒
-                    <span class="cart-count" id="cart-count">0</span>
-                </button>
+            <nav class="nav-tabs">
+                <button class="nav-tab active" data-tab="catalogo">Catálogo</button>
+                <button class="nav-tab" data-tab="institucional">Institucional</button>
+            </nav>
+            <div class="header-right">
+                <div class="search-box">
+                    <input type="text" placeholder="Buscar produtos..." class="search-input">
+                    <button class="search-btn">🔍</button>
+                </div>
+                <div class="cart-icon-container">
+                    <button class="cart-icon" id="cart-btn">
+                        🛒
+                        <span class="cart-count" id="cart-count">0</span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="main-content">
-        <section class="catalog">
-            <h2>Catálogo de Produtos</h2>
-            <div class="products-grid" id="products-grid">
-                <!-- Produtos inseridos via JavaScript -->
-            </div>
+        <!-- Aba Catálogo -->
+        <section id="tab-catalogo" class="tab-content active">
+            <section class="catalog">
+                <h2>Catálogo de Produtos</h2>
+                <div class="products-grid" id="products-grid">
+                    <!-- Produtos inseridos via JavaScript -->
+                </div>
+            </section>
+        </section>
+
+        <!-- Aba Institucional -->
+        <section id="tab-institucional" class="tab-content">
+            <section class="institucional">
+                <div class="institucional-header">
+                    <h2>Sobre a HCF</h2>
+                    <p class="subtitle">Empresa brasileira especializada em soluções de tecnologia da informação</p>
+                </div>
+
+                <div class="institucional-grid">
+                    <!-- Sobre -->
+                    <div class="institucional-card">
+                        <h3>Quem Somos</h3>
+                        <p>A HCF é uma empresa brasileira com presença nacional, especializada em soluções completas de tecnologia da informação. Com mais de 10 anos de operação, transformamos e avançamos negócios através da inovação e confiança.</p>
+                    </div>
+
+                    <!-- Missão -->
+                    <div class="institucional-card">
+                        <h3>Nossa Missão</h3>
+                        <p>Transformar e avançar empresas através de soluções inovadoras de tecnologia, com trabalho colaborativo e dedicado que prioriza o sucesso do cliente como força motriz.</p>
+                    </div>
+
+                    <!-- Visão -->
+                    <div class="institucional-card">
+                        <h3>Nossa Visão</h3>
+                        <p>Ser a referência em soluções de tecnologia da informação no Brasil, entregando inovação e confiança às empresas de todos os tamanhos e setores, independente de localização.</p>
+                    </div>
+
+                    <!-- Satisfação -->
+                    <div class="institucional-card highlight">
+                        <h3>📊 99% de Satisfação</h3>
+                        <p>Nossos clientes confiam em nós e comprovam sua satisfação. Essa é a métrica que mais nos importa.</p>
+                    </div>
+                </div>
+
+                <div class="pillars-section">
+                    <h3>Nossos Pilares de Atuação</h3>
+                    <div class="pillars-grid">
+                        <div class="pillar">
+                            <div class="pillar-icon">🌐</div>
+                            <h4>Networking</h4>
+                            <p>Soluções de conectividade e infraestrutura de rede de alta performance</p>
+                        </div>
+                        <div class="pillar">
+                            <div class="pillar-icon">🖥️</div>
+                            <h4>Datacenter</h4>
+                            <p>Infraestrutura, servidores e sistemas de armazenamento robusto</p>
+                        </div>
+                        <div class="pillar">
+                            <div class="pillar-icon">🔒</div>
+                            <h4>Continuidade</h4>
+                            <p>Backup, disaster recovery e soluções para proteção de dados</p>
+                        </div>
+                        <div class="pillar">
+                            <div class="pillar-icon">🛡️</div>
+                            <h4>Cyber Security</h4>
+                            <p>Segurança avançada com monitoramento e prevenção de incidentes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certifications-section">
+                    <h3>Certificações e Parcerias</h3>
+                    <div class="certifications-list">
+                        <span class="cert-badge">Cisco</span>
+                        <span class="cert-badge">Microsoft Azure</span>
+                        <span class="cert-badge">Google Cloud</span>
+                        <span class="cert-badge">IBM</span>
+                        <span class="cert-badge">Lenovo</span>
+                        <span class="cert-badge">Trend Micro</span>
+                        <span class="cert-badge">Fortinet</span>
+                    </div>
+                </div>
+
+                <div class="contact-section">
+                    <h3>Entre em Contato</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <strong>Endereço:</strong><br>
+                            Av. Del Rey, 111 - Monte Rey Office<br>
+                            SL 414, Torre A - Caiçaras<br>
+                            Belo Horizonte/MG - CEP 30.775-240
+                        </div>
+                        <div class="contact-item">
+                            <strong>Telefone:</strong><br>
+                            <a href="tel:+553130246099">(31) 3024-6099</a>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Email:</strong><br>
+                            <a href="mailto:contato@hcftec.com.br">contato@hcftec.com.br</a>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Redes Sociais:</strong><br>
+                            <a href="https://instagram.com/hcf.network" target="_blank">Instagram @hcf.network</a><br>
+                            <a href="https://facebook.com/hcf.network" target="_blank">Facebook @hcf.network</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </section>
     </main>
 
