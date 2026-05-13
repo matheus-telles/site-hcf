@@ -125,7 +125,7 @@ const products = [
 // Configuração WhatsApp
 const WHATSAPP_CONFIG = {
     phoneNumber: '5511999999999', // Substituir com número real
-    companyName: 'TechMarket'
+    companyName: 'HCF'
 };
 
 // Estado do carrinho
