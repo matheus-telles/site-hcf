@@ -3,6 +3,7 @@ const products = [
     {
         id: 1,
         name: 'Servidor Dell PowerEdge R750',
+        category: 'Hardware',
         description: 'Servidor de alto desempenho para data center',
         fullDescription: 'Servidor Dell PowerEdge R750 com processadores Intel Xeon escaláveis, ideal para ambientes corporativos de alta demanda. Oferece excelente relação de processamento e eficiência energética.',
         price: 15999.99,
@@ -13,11 +14,13 @@ const products = [
             'Redundância de fonte de poder',
             'Garantia de 3 anos'
         ],
-        emoji: '🖥️'
+        emoji: '🖥️',
+        image: 'images/products/dell-r750-server.webp'
     },
     {
         id: 2,
         name: 'Notebook Lenovo ThinkPad E15',
+        category: 'Notebooks',
         description: 'Notebook empresarial de alta performance',
         fullDescription: 'Notebook Lenovo ThinkPad E15 com processador Intel i7, perfeito para profissionais que precisam de mobilidade e desempenho. Bateria de longa duração e design robusto.',
         price: 6499.99,
@@ -33,6 +36,7 @@ const products = [
     {
         id: 3,
         name: 'Windows 10 Pro License',
+        category: 'Software',
         description: 'Licença permanente do Windows 10 Pro',
         fullDescription: 'Licença digital permanente do Windows 10 Pro. Inclui suporte técnico e atualizações gratuitas. Entrega imediata via email.',
         price: 899.99,
@@ -43,11 +47,13 @@ const products = [
             'Atualizações gratuitas',
             'Ativação online'
         ],
-        emoji: '🪟'
+        emoji: '🪟',
+        image: 'images/products/win10 license.jpg'
     },
     {
         id: 4,
         name: 'Microsoft Office 365 (12 meses)',
+        category: 'Software',
         description: 'Assinatura anual do Office 365 com 5 instalações',
         fullDescription: 'Microsoft Office 365 com acesso a Word, Excel, PowerPoint, Outlook e mais. Inclui 1TB de OneDrive. Válido por 12 meses com renovação automática.',
         price: 349.99,
@@ -63,6 +69,7 @@ const products = [
     {
         id: 5,
         name: 'Solução Backup Corporativa',
+        category: 'Acessórios',
         description: 'Sistema completo de backup e recuperação',
         fullDescription: 'Solução profissional de backup com replicação automática, recuperação de desastres e compliance com LGPD. Implementação e suporte técnico inclusos.',
         price: 9999.99,
@@ -78,6 +85,7 @@ const products = [
     {
         id: 6,
         name: 'Processador Intel Xeon Platinum 8490H',
+        category: 'Hardware',
         description: 'Processador de ultra alta performance para servidores',
         fullDescription: 'Intel Xeon Platinum 8490H com 60 núcleos e arquitetura Intel 7. Ideal para servidores de computação intensiva e análise de dados em larga escala.',
         price: 12499.99,
@@ -88,11 +96,13 @@ const products = [
             'Cache L3 105MB',
             'Suporte a AVX-512'
         ],
-        emoji: '⚙️'
+        emoji: '⚙️',
+        image: 'images/products/xeon.avif'
     },
     {
         id: 7,
         name: 'SSD Kingston 1TB',
+        category: 'Acessórios',
         description: 'Unidade SSD de alta velocidade com protocolo NVMe',
         fullDescription: 'SSD Kingston A3000 com interface NVMe, oferecendo velocidades de leitura até 3500 MB/s. Perfeito para upgrades de desempenho em notebooks e desktops.',
         price: 599.99,
@@ -108,6 +118,7 @@ const products = [
     {
         id: 8,
         name: 'Roteador Cisco Catalyst 9300',
+        category: 'Network',
         description: 'Roteador enterprise com tecnologia WiFi 6',
         fullDescription: 'Roteador Cisco Catalyst 9300 com suporte a WiFi 6E, ideal para ambientes corporativos. Oferece segurança avançada, escalabilidade e gerenciamento centralizado.',
         price: 4299.99,
@@ -118,7 +129,8 @@ const products = [
             'Gerenciamento cloud',
             'Segurança AES-256'
         ],
-        emoji: '📡'
+        emoji: '📡',
+        image: 'images/products/cisco catalyst.jpg'
     }
 ];
 
@@ -135,17 +147,57 @@ let cart = [];
 let isCartOpen = false;
 let isModalOpen = false;
 let currentProduct = null;
+let currentCategory = 'Todos';
+
+// Get unique categories
+function getCategories() {
+    const categories = [...new Set(products.map(p => p.category))];
+    return ['Todos', ...categories.sort()];
+}
+
+// Render category tabs
+function renderCategoryTabs() {
+    const tabsContainer = document.getElementById('category-tabs');
+    if (!tabsContainer) return;
+
+    tabsContainer.innerHTML = '';
+    const categories = getCategories();
+
+    categories.forEach(category => {
+        const button = document.createElement('button');
+        button.className = `category-tab ${category === currentCategory ? 'active' : ''}`;
+        button.textContent = category;
+        button.addEventListener('click', () => {
+            currentCategory = category;
+            renderCategoryTabs();
+            renderCatalog();
+        });
+        tabsContainer.appendChild(button);
+    });
+}
+
+// Get filtered products
+function getFilteredProducts() {
+    if (currentCategory === 'Todos') {
+        return products;
+    }
+    return products.filter(p => p.category === currentCategory);
+}
 
 // Renderizar catálogo de produtos
 function renderCatalog() {
     const productsGrid = document.getElementById('products-grid');
     productsGrid.innerHTML = '';
 
-    products.forEach(product => {
+    const filteredProducts = getFilteredProducts();
+    filteredProducts.forEach(product => {
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
+        const imageContent = product.image
+            ? `<img src="${product.image}" alt="${product.name}" class="product-img">`
+            : `<div class="product-emoji">${product.emoji}</div>`;
         productCard.innerHTML = `
-            <div class="product-image">${product.emoji}</div>
+            <div class="product-image">${imageContent}</div>
             <div class="product-info">
                 <h3 class="product-name">${product.name}</h3>
                 <p class="product-description">${product.description}</p>
@@ -171,9 +223,12 @@ function openModal(productId) {
     const modalOverlay = document.getElementById('modal-overlay');
     const modalContent = document.getElementById('modal-content');
 
+    const modalImageContent = currentProduct.image
+        ? `<img src="${currentProduct.image}" alt="${currentProduct.name}" class="modal-product-img">`
+        : `<div class="modal-emoji">${currentProduct.emoji}</div>`;
     modalContent.innerHTML = `
         <button class="modal-close" id="modal-close">✕</button>
-        <div class="modal-image">${currentProduct.emoji}</div>
+        <div class="modal-image">${modalImageContent}</div>
         <div class="modal-info">
             <h2>${currentProduct.name}</h2>
             <p class="modal-description">${currentProduct.fullDescription}</p>
@@ -355,6 +410,9 @@ function closeCart() {
 
 // Inicializar event listeners quando DOM estiver pronto
 document.addEventListener('DOMContentLoaded', () => {
+    // Renderizar abas de categoria
+    renderCategoryTabs();
+
     // Renderizar catálogo inicial
     renderCatalog();
 
