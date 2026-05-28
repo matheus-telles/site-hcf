@@ -51,32 +51,32 @@
                 <div class="solution-card segment-card">
                     <h3>Finanças</h3>
                     <p>Compliance regulatório, core banking, prevenção a fraude, alta disponibilidade.</p>
-                    <a href="#pacotes" class="segment-link">Ver pacotes recomendados →</a>
+                    <a href="#pacotes" class="segment-link" data-segment="financas">Ver pacotes recomendados →</a>
                 </div>
                 <div class="solution-card segment-card">
                     <h3>Saúde</h3>
                     <p>LGPD, prontuário eletrônico, telemedicina, continuidade operacional.</p>
-                    <a href="#pacotes" class="segment-link">Ver pacotes recomendados →</a>
+                    <a href="#pacotes" class="segment-link" data-segment="saude">Ver pacotes recomendados →</a>
                 </div>
                 <div class="solution-card segment-card">
                     <h3>Varejo</h3>
                     <p>E-commerce, PDV, omnichannel, picos sazonais.</p>
-                    <a href="#pacotes" class="segment-link">Ver pacotes recomendados →</a>
+                    <a href="#pacotes" class="segment-link" data-segment="varejo">Ver pacotes recomendados →</a>
                 </div>
                 <div class="solution-card segment-card">
                     <h3>Indústria</h3>
                     <p>OT/IT, IoT industrial, produção 24/7, supply chain.</p>
-                    <a href="#pacotes" class="segment-link">Ver pacotes recomendados →</a>
+                    <a href="#pacotes" class="segment-link" data-segment="industria">Ver pacotes recomendados →</a>
                 </div>
                 <div class="solution-card segment-card">
                     <h3>Setor Público</h3>
                     <p>Licitação, transparência, cidadão digital, governança ITIL.</p>
-                    <a href="#pacotes" class="segment-link">Ver pacotes recomendados →</a>
+                    <a href="#pacotes" class="segment-link" data-segment="setor-publico">Ver pacotes recomendados →</a>
                 </div>
                 <div class="solution-card segment-card">
                     <h3>Cooperativas</h3>
                     <p>Multi-unidade, governança, sistemas core, gestão de associados.</p>
-                    <a href="#pacotes" class="segment-link">Ver pacotes recomendados →</a>
+                    <a href="#pacotes" class="segment-link" data-segment="cooperativas">Ver pacotes recomendados →</a>
                 </div>
             </div>
         </div>
@@ -132,8 +132,17 @@
         <div class="container">
             <h2>Pacotes de Soluções</h2>
             <p class="section-subtitle">Combos prontos cross-vendor, montados pela HCF para acelerar entrega e reduzir risco de integração.</p>
+            <div class="segment-tabs" role="tablist" aria-label="Filtrar pacotes por segmento">
+                <button class="segment-tab" data-segment="cooperativas">Cooperativas</button>
+                <button class="segment-tab" data-segment="financas">Finanças</button>
+                <button class="segment-tab" data-segment="saude">Saúde</button>
+                <button class="segment-tab" data-segment="varejo">Varejo</button>
+                <button class="segment-tab" data-segment="industria">Indústria</button>
+                <button class="segment-tab" data-segment="setor-publico">Setor Público</button>
+            </div>
+            <p class="segment-context"></p>
             <div class="solutions-grid packages-grid">
-                <div class="solution-card package-card">
+                <div class="solution-card package-card" data-segments="cooperativas financas saude">
                     <span class="package-outcome-tag">Segurança</span>
                     <h3>Home Office Seguro</h3>
                     <p class="package-pitch">Trabalho remoto com proteção corporativa, produtividade integrada e visibilidade total dos endpoints.</p>
@@ -151,10 +160,10 @@
                         <span class="component-chip">Kaspersky EDR</span>
                         <span class="component-chip">Setup HCF</span>
                     </div>
-                    <p class="package-recommended">Recomendado para: Finanças, Cooperativas, Saúde</p>
+                    <p class="package-recommended">Recomendado para: Cooperativas, Finanças, Saúde</p>
                     <a href="pacote-home-office-seguro.html" class="package-link">Ver detalhes do pacote →</a>
                 </div>
-                <div class="solution-card package-card">
+                <div class="solution-card package-card" data-segments="varejo industria setor-publico">
                     <span class="package-outcome-tag">Cloud</span>
                     <h3>Migração Cloud Híbrida</h3>
                     <p class="package-pitch">Sair de data center legado preservando workloads críticos, sem janela de indisponibilidade prolongada.</p>
@@ -173,10 +182,10 @@
                         <span class="component-chip">Cisco SD-WAN</span>
                         <span class="component-chip">Assessment HCF</span>
                     </div>
-                    <p class="package-recommended">Recomendado para: Indústria, Setor Público</p>
+                    <p class="package-recommended">Recomendado para: Varejo, Indústria, Setor Público</p>
                     <a href="pacote-migracao-cloud-hibrida.html" class="package-link">Ver detalhes do pacote →</a>
                 </div>
-                <div class="solution-card package-card">
+                <div class="solution-card package-card" data-segments="cooperativas financas saude varejo">
                     <span class="package-outcome-tag">Resiliência</span>
                     <h3>Continuidade & DR</h3>
                     <p class="package-pitch">Disaster recovery multi-site com RPO/RTO definidos por aplicação e testes regulares de failover.</p>
@@ -195,10 +204,10 @@
                         <span class="component-chip">IBM Storage</span>
                         <span class="component-chip">Runbook HCF</span>
                     </div>
-                    <p class="package-recommended">Recomendado para: Saúde, Varejo, Cooperativas</p>
+                    <p class="package-recommended">Recomendado para: Cooperativas, Finanças, Saúde, Varejo</p>
                     <a href="pacote-continuidade-dr.html" class="package-link">Ver detalhes do pacote →</a>
                 </div>
-                <div class="solution-card package-card">
+                <div class="solution-card package-card" data-segments="cooperativas industria setor-publico">
                     <span class="package-outcome-tag">Modernização</span>
                     <h3>Modernização de Core</h3>
                     <p class="package-pitch">Sair de sistemas legados (mainframe, ERP antigo, Power IBM) sem parar a operação.</p>
@@ -217,7 +226,7 @@
                         <span class="component-chip">Microsoft Dynamics</span>
                         <span class="component-chip">Roadmap HCF</span>
                     </div>
-                    <p class="package-recommended">Recomendado para: Indústria, Cooperativas, Setor Público</p>
+                    <p class="package-recommended">Recomendado para: Cooperativas, Indústria, Setor Público</p>
                     <a href="pacote-modernizacao-core.html" class="package-link">Ver detalhes do pacote →</a>
                 </div>
             </div>
@@ -279,6 +288,42 @@
             document.documentElement.setAttribute('data-theme', next);
             localStorage.setItem('theme', next);
         });
+    </script>
+    <script>
+        // Filtro de pacotes por segmento (funil por tipo de negócio)
+        (function () {
+            const tabs = document.querySelectorAll('.segment-tab');
+            const cards = document.querySelectorAll('.package-card[data-segments]');
+            const contextEl = document.querySelector('.segment-context');
+            if (!tabs.length || !cards.length) return;
+
+            const CONTEXTS = {
+                'cooperativas': 'Multi-unidade, governança, sistemas core, gestão de associados.',
+                'financas': 'Compliance regulatório, core banking, prevenção a fraude, alta disponibilidade.',
+                'saude': 'LGPD, prontuário eletrônico, telemedicina, continuidade operacional.',
+                'varejo': 'E-commerce, PDV, omnichannel, picos sazonais.',
+                'industria': 'OT/IT, IoT industrial, produção 24/7, supply chain.',
+                'setor-publico': 'Licitação, transparência, cidadão digital, governança ITIL.'
+            };
+
+            function activate(slug) {
+                tabs.forEach(t => t.classList.toggle('active', t.dataset.segment === slug));
+                cards.forEach(c => {
+                    c.hidden = !c.dataset.segments.split(' ').includes(slug);
+                });
+                if (contextEl) contextEl.textContent = CONTEXTS[slug] || '';
+            }
+
+            tabs.forEach(t => t.addEventListener('click', () => activate(t.dataset.segment)));
+
+            // Card de segmento ativa a aba correspondente (scroll via âncora nativa)
+            document.querySelectorAll('.segment-link[data-segment]').forEach(link => {
+                link.addEventListener('click', () => activate(link.dataset.segment));
+            });
+
+            // Estado inicial: Cooperativas (ênfase do negócio)
+            activate('cooperativas');
+        })();
     </script>
 </body>
 </html>
