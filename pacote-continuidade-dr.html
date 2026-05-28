@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continuidade & DR - Pacote HCF</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function () {
+            const saved = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+        })();
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="hcf.png" alt="HCF" class="logo-img">
+            </a>
+            <nav class="nav-tabs">
+                <a href="index.html" class="nav-tab">Catálogo</a>
+                <a href="index.html" class="nav-tab">Institucional</a>
+                <a href="solucoes.html" class="nav-tab active">Soluções</a>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema">
+                <span class="theme-icon-light">☀️</span>
+                <span class="theme-icon-dark">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <section class="pkg-hero">
+        <div class="container">
+            <p class="pkg-breadcrumb"><a href="solucoes.html">Soluções</a> &rsaquo; Pacotes &rsaquo; Continuidade &amp; DR</p>
+            <span class="pkg-hero-tag">Resiliência</span>
+            <h1>Continuidade &amp; DR</h1>
+            <p class="pkg-pitch">Disaster recovery multi-site com RPO/RTO definidos por aplicação, backup imutável anti-ransomware e simulação real de failover.</p>
+        </div>
+    </section>
+
+    <section class="pkg-section">
+        <div class="container">
+            <h2>Visão geral</h2>
+            <p>A maioria das estratégias de backup falha no momento mais importante: o teste. Snapshots existem, mas ninguém sabe quanto tempo leva pra restaurar. Ransomware criptografa o backup junto. Não há runbook claro de quem aciona o quê.</p>
+            <p>Este pacote resolve isso em camadas: replicação síncrona VMware para Tier 1, AWS Backup com cofre imutável para resistência a ransomware, IBM Storage no site secundário para retenção de longo prazo, e — o mais importante — runbooks documentados com simulação assistida de failover antes do projeto fechar.</p>
+        </div>
+    </section>
+
+    <section class="pkg-section alt">
+        <div class="container">
+            <h2>Componentes do pacote</h2>
+            <div class="pkg-components-grid">
+                <div class="pkg-component">
+                    <h3>VMware Replication</h3>
+                    <p>Replicação assíncrona entre sites com RPO configurável por aplicação. Failover orquestrado via Site Recovery Manager.</p>
+                </div>
+                <div class="pkg-component">
+                    <h3>AWS Backup</h3>
+                    <p>Cofre imutável (vault lock) com retenção configurável, cross-region replication e criptografia gerenciada por KMS.</p>
+                </div>
+                <div class="pkg-component">
+                    <h3>IBM Storage</h3>
+                    <p>Armazenamento de longo prazo no site secundário com deduplicação, compressão e snapshots WORM para compliance regulatório.</p>
+                </div>
+                <div class="pkg-component">
+                    <h3>Runbooks HCF</h3>
+                    <p>Documentação executável de cada cenário de falha, com gatilho, sequência de restauração, responsáveis e simulação real assistida.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pkg-section">
+        <div class="container">
+            <h2>Resultados esperados</h2>
+            <div class="pkg-outcomes">
+                <div class="pkg-outcome">
+                    <div class="pkg-outcome-number">&lt;15min</div>
+                    <p>RPO para aplicações Tier 1 com replicação síncrona</p>
+                </div>
+                <div class="pkg-outcome">
+                    <div class="pkg-outcome-number">&lt;4h</div>
+                    <p>RTO típico para failover completo de Tier 1</p>
+                </div>
+                <div class="pkg-outcome">
+                    <div class="pkg-outcome-number">100%</div>
+                    <p>Aplicações com runbook testado e simulação documentada</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pkg-section alt">
+        <div class="container">
+            <h2>Como entregamos</h2>
+            <div class="pkg-phases">
+                <div class="pkg-phase">
+                    <div class="pkg-phase-number"></div>
+                    <div class="pkg-phase-body">
+                        <h3>BIA — Business Impact Analysis (Semanas 1-2)</h3>
+                        <p>Classificação de aplicações por criticidade, definição de RPO/RTO por workload e mapeamento de dependências.</p>
+                    </div>
+                </div>
+                <div class="pkg-phase">
+                    <div class="pkg-phase-number"></div>
+                    <div class="pkg-phase-body">
+                        <h3>Implantação de infra (Semanas 3-6)</h3>
+                        <p>Setup VMware Replication, criação de cofres AWS Backup imutáveis e provisionamento IBM Storage no site secundário.</p>
+                    </div>
+                </div>
+                <div class="pkg-phase">
+                    <div class="pkg-phase-number"></div>
+                    <div class="pkg-phase-body">
+                        <h3>Runbooks &amp; documentação (Semanas 6-8)</h3>
+                        <p>Construção de runbooks por aplicação, definição de papéis, gatilhos e árvore de escalação.</p>
+                    </div>
+                </div>
+                <div class="pkg-phase">
+                    <div class="pkg-phase-number"></div>
+                    <div class="pkg-phase-body">
+                        <h3>Simulação real (Semana 9)</h3>
+                        <p>Teste de failover assistido pela HCF com o time interno, lições aprendidas e ajuste fino dos runbooks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pkg-section">
+        <div class="container">
+            <h2>Para quem é</h2>
+            <p>Empresas com obrigação regulatória de DR (ANS, ANEEL, BACEN), operações 24/7 que não toleram downtime, ou organizações que já sofreram tentativa de ransomware.</p>
+            <div class="pkg-segments">
+                <span class="component-chip">Saúde</span>
+                <span class="component-chip">Varejo</span>
+                <span class="component-chip">Cooperativas</span>
+                <span class="component-chip">Finanças</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="pkg-cta">
+        <div class="container">
+            <h2>Pronto para conversar?</h2>
+            <p>Nosso time monta uma proposta customizada para o seu cenário em até 3 dias úteis.</p>
+            <a href="mailto:vendas@hcftec.br?subject=Interesse%20no%20pacote%20Continuidade%20e%20DR&body=Ol%C3%A1%2C%20gostaria%20de%20receber%20uma%20proposta%20para%20o%20pacote%20Continuidade%20e%20DR." class="pkg-cta-btn">Falar com vendas →</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 HCF. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+    </script>
+</body>
+</html>

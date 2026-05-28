@@ -4,19 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nossas Soluções - HCF</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="styles.css">
+    <script>
+        (function () {
+            const saved = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = saved || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="header-container">
-            <div class="logo">HCF</div>
-            <nav class="nav">
-                <a href="index.html">Home</a>
-                <a href="index.html">Institucional</a>
-                <a href="solucoes.html" class="active">Soluções</a>
-                <a href="index.html">Marketplace</a>
+            <a href="index.html" class="logo">
+                <img src="hcf.png" alt="HCF" class="logo-img">
+            </a>
+            <nav class="nav-tabs">
+                <a href="index.html" class="nav-tab">Catálogo</a>
+                <a href="index.html" class="nav-tab">Institucional</a>
+                <a href="solucoes.html" class="nav-tab">Soluções</a>
             </nav>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema">
+                <span class="theme-icon-light">☀️</span>
+                <span class="theme-icon-dark">🌙</span>
+            </button>
         </div>
     </header>
 
@@ -24,49 +38,187 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Nossas Soluções</h1>
-            <p>Soluções tecnológicas para transformar seu negócio</p>
+            <p>Por segmento, por parceiro, ou em pacotes prontos cross-vendor.</p>
         </div>
     </section>
 
-    <!-- Solutions Grid Section -->
-    <section class="solutions-section">
+    <!-- Segmentos Section -->
+    <section class="solutions-section" id="segmentos">
         <div class="container">
-            <h2>6 Soluções Principais</h2>
+            <h2>Para o seu segmento</h2>
+            <p class="section-subtitle">Selecione o setor que mais se aproxima do seu negócio.</p>
             <div class="solutions-grid">
-                <!-- Cloud Solutions -->
-                <div class="solution-card">
-                    <span class="solution-category">Cloud</span>
-                    <h3>Cloud Migration</h3>
-                    <p>Migração segura e otimizada de infraestrutura para ambientes cloud. Minimizamos downtime e garantimos conformidade regulatória.</p>
+                <div class="solution-card segment-card">
+                    <h3>Finanças</h3>
+                    <p>Compliance regulatório, core banking, prevenção a fraude, alta disponibilidade.</p>
+                    <a href="#pacotes" class="segment-link">Ver pacotes recomendados →</a>
                 </div>
-                <div class="solution-card">
-                    <span class="solution-category">Cloud</span>
-                    <h3>Cloud Management</h3>
-                    <p>Gerenciamento completo de ambientes multi-cloud. Monitoramento, otimização de custos e suporte 24/7.</p>
+                <div class="solution-card segment-card">
+                    <h3>Saúde</h3>
+                    <p>LGPD, prontuário eletrônico, telemedicina, continuidade operacional.</p>
+                    <a href="#pacotes" class="segment-link">Ver pacotes recomendados →</a>
                 </div>
+                <div class="solution-card segment-card">
+                    <h3>Varejo</h3>
+                    <p>E-commerce, PDV, omnichannel, picos sazonais.</p>
+                    <a href="#pacotes" class="segment-link">Ver pacotes recomendados →</a>
+                </div>
+                <div class="solution-card segment-card">
+                    <h3>Indústria</h3>
+                    <p>OT/IT, IoT industrial, produção 24/7, supply chain.</p>
+                    <a href="#pacotes" class="segment-link">Ver pacotes recomendados →</a>
+                </div>
+                <div class="solution-card segment-card">
+                    <h3>Setor Público</h3>
+                    <p>Licitação, transparência, cidadão digital, governança ITIL.</p>
+                    <a href="#pacotes" class="segment-link">Ver pacotes recomendados →</a>
+                </div>
+                <div class="solution-card segment-card">
+                    <h3>Cooperativas</h3>
+                    <p>Multi-unidade, governança, sistemas core, gestão de associados.</p>
+                    <a href="#pacotes" class="segment-link">Ver pacotes recomendados →</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Security Solutions -->
-                <div class="solution-card">
-                    <span class="solution-category">Security</span>
-                    <h3>Cybersecurity Assessment</h3>
-                    <p>Avaliação completa de vulnerabilidades e riscos de segurança. Diagnóstico detalhado com plano de remediação.</p>
+    <!-- Parceiros Section -->
+    <section class="solutions-section" id="parceiros">
+        <div class="container">
+            <h2>Nossos Parceiros Tecnológicos</h2>
+            <p class="section-subtitle">Trabalhamos com fabricantes líderes para entregar soluções de ponta.</p>
+            <div class="vendors-grid">
+                <div class="solution-card vendor-card">
+                    <span class="solution-category">Produtividade & Cloud</span>
+                    <h3>Microsoft</h3>
+                    <p>M365, Azure, Dynamics 365, Copilot, licenciamento enterprise.</p>
                 </div>
-                <div class="solution-card">
-                    <span class="solution-category">Security</span>
-                    <h3>Incident Response</h3>
-                    <p>Resposta rápida a incidentes de segurança. Suporte 24/7 com especialistas para minimizar impacto.</p>
+                <div class="solution-card vendor-card">
+                    <span class="solution-category">Cloud</span>
+                    <h3>AWS</h3>
+                    <p>Workloads críticos, Well-Architected Review, FinOps.</p>
                 </div>
+                <div class="solution-card vendor-card">
+                    <span class="solution-category">Virtualização</span>
+                    <h3>VMware</h3>
+                    <p>vSphere, VMware Cloud Foundation, modernização de data center.</p>
+                </div>
+                <div class="solution-card vendor-card">
+                    <span class="solution-category">Mainframe & Dados</span>
+                    <h3>IBM</h3>
+                    <p>Power, Storage, Db2, modernização de legado.</p>
+                </div>
+                <div class="solution-card vendor-card">
+                    <span class="solution-category">Rede & Colaboração</span>
+                    <h3>Cisco</h3>
+                    <p>Switching, Meraki, Webex, SD-WAN.</p>
+                </div>
+                <div class="solution-card vendor-card">
+                    <span class="solution-category">Segurança</span>
+                    <h3>Fortinet</h3>
+                    <p>NGFW, SASE, ZTNA, FortiAnalyzer.</p>
+                </div>
+                <div class="solution-card vendor-card">
+                    <span class="solution-category">Endpoint</span>
+                    <h3>Kaspersky</h3>
+                    <p>EDR/XDR, anti-malware, threat intelligence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Infrastructure Solutions -->
-                <div class="solution-card">
-                    <span class="solution-category">Infrastructure</span>
-                    <h3>Data Center Solutions</h3>
-                    <p>Design e implementação de data centers seguros e escaláveis. Infrastructure otimizada para performance.</p>
+    <!-- Pacotes Section -->
+    <section class="solutions-section" id="pacotes">
+        <div class="container">
+            <h2>Pacotes de Soluções</h2>
+            <p class="section-subtitle">Combos prontos cross-vendor, montados pela HCF para acelerar entrega e reduzir risco de integração.</p>
+            <div class="solutions-grid packages-grid">
+                <div class="solution-card package-card">
+                    <span class="package-outcome-tag">Segurança</span>
+                    <h3>Home Office Seguro</h3>
+                    <p class="package-pitch">Trabalho remoto com proteção corporativa, produtividade integrada e visibilidade total dos endpoints.</p>
+                    <p class="package-long">Combinamos identidade gerenciada do Microsoft 365 com VPN corporativa Fortinet e detecção de ameaças em tempo real via Kaspersky EDR. Resultado: colaboradores acessam dados sensíveis de qualquer lugar com o mesmo nível de controle do escritório, e o time de TI mantém auditoria de acessos, MFA obrigatório e contenção automática de incidentes.</p>
+                    <h4 class="package-section-title">O que está incluso</h4>
+                    <ul class="package-benefits">
+                        <li>Licenciamento Microsoft 365 Business + configuração de tenant</li>
+                        <li>FortiGate SSL-VPN com perfis por grupo de usuário</li>
+                        <li>Kaspersky EDR em todos os endpoints com console central</li>
+                        <li>Setup, treinamento de equipe e 30 dias de suporte assistido HCF</li>
+                    </ul>
+                    <div class="package-components">
+                        <span class="component-chip">Microsoft M365</span>
+                        <span class="component-chip">Fortinet FortiGate SSL-VPN</span>
+                        <span class="component-chip">Kaspersky EDR</span>
+                        <span class="component-chip">Setup HCF</span>
+                    </div>
+                    <p class="package-recommended">Recomendado para: Finanças, Cooperativas, Saúde</p>
+                    <a href="pacote-home-office-seguro.html" class="package-link">Ver detalhes do pacote →</a>
                 </div>
-                <div class="solution-card">
-                    <span class="solution-category">Infrastructure</span>
-                    <h3>Network Infrastructure</h3>
-                    <p>Arquitetura de rede robusta e resiliente. Conectividade de alta performance com redundância.</p>
+                <div class="solution-card package-card">
+                    <span class="package-outcome-tag">Cloud</span>
+                    <h3>Migração Cloud Híbrida</h3>
+                    <p class="package-pitch">Sair de data center legado preservando workloads críticos, sem janela de indisponibilidade prolongada.</p>
+                    <p class="package-long">Mapeamos dependências de aplicação, definimos quais cargas vão para AWS e quais permanecem em VMware Cloud Foundation, e conectamos tudo via Cisco SD-WAN com SLA definido por aplicação. A HCF conduz o assessment, executa o piloto, valida com seu time e só então faz o cutover. Você ganha elasticidade de cloud onde faz sentido e mantém investimento em hardware onde a economia é real.</p>
+                    <h4 class="package-section-title">O que está incluso</h4>
+                    <ul class="package-benefits">
+                        <li>Assessment Well-Architected e plano de migração faseado</li>
+                        <li>Provisionamento AWS (landing zone, redes, IAM, FinOps inicial)</li>
+                        <li>Implantação VMware Cloud Foundation on-prem</li>
+                        <li>Cisco SD-WAN ligando filiais, DC e cloud com QoS por app</li>
+                        <li>Cutover assistido por equipe HCF + handover documentado</li>
+                    </ul>
+                    <div class="package-components">
+                        <span class="component-chip">AWS</span>
+                        <span class="component-chip">VMware Cloud Foundation</span>
+                        <span class="component-chip">Cisco SD-WAN</span>
+                        <span class="component-chip">Assessment HCF</span>
+                    </div>
+                    <p class="package-recommended">Recomendado para: Indústria, Setor Público</p>
+                    <a href="pacote-migracao-cloud-hibrida.html" class="package-link">Ver detalhes do pacote →</a>
+                </div>
+                <div class="solution-card package-card">
+                    <span class="package-outcome-tag">Resiliência</span>
+                    <h3>Continuidade & DR</h3>
+                    <p class="package-pitch">Disaster recovery multi-site com RPO/RTO definidos por aplicação e testes regulares de failover.</p>
+                    <p class="package-long">Construímos camadas de proteção: snapshot local em VMware para recuperação rápida, backup imutável em AWS Backup para resistência a ransomware, e armazenamento IBM em site secundário para retenção de longo prazo. Cada aplicação crítica recebe um runbook documentado com gatilho, sequência de restauração e responsáveis, e a HCF acompanha o primeiro teste real de failover.</p>
+                    <h4 class="package-section-title">O que está incluso</h4>
+                    <ul class="package-benefits">
+                        <li>Análise BIA: classificação de aplicações por criticidade</li>
+                        <li>Replicação VMware com RPO &lt; 15min para Tier 1</li>
+                        <li>AWS Backup com cofre imutável e retenção configurável</li>
+                        <li>IBM Storage no site secundário para arquivamento</li>
+                        <li>Runbooks de DR + simulação de failover guiada pela HCF</li>
+                    </ul>
+                    <div class="package-components">
+                        <span class="component-chip">VMware</span>
+                        <span class="component-chip">AWS Backup</span>
+                        <span class="component-chip">IBM Storage</span>
+                        <span class="component-chip">Runbook HCF</span>
+                    </div>
+                    <p class="package-recommended">Recomendado para: Saúde, Varejo, Cooperativas</p>
+                    <a href="pacote-continuidade-dr.html" class="package-link">Ver detalhes do pacote →</a>
+                </div>
+                <div class="solution-card package-card">
+                    <span class="package-outcome-tag">Modernização</span>
+                    <h3>Modernização de Core</h3>
+                    <p class="package-pitch">Sair de sistemas legados (mainframe, ERP antigo, Power IBM) sem parar a operação.</p>
+                    <p class="package-long">Abordagem estrangulada: o legado continua rodando enquanto a HCF migra módulo a módulo para Azure ou Dynamics 365, sempre com pareamento de dados e janelas curtas de cutover. Cada onda traz roadmap, plano de rollback e capacitação do time interno. O resultado é um core moderno, integrável com APIs e analytics, sem o trauma de um big-bang.</p>
+                    <h4 class="package-section-title">O que está incluso</h4>
+                    <ul class="package-benefits">
+                        <li>Discovery do legado + roadmap de modernização por ondas</li>
+                        <li>Migração assistida Power → Azure (IaaS, PaaS ou refactor)</li>
+                        <li>Implantação Microsoft Dynamics 365 onde aplicável</li>
+                        <li>Integração via API entre legado remanescente e novos serviços</li>
+                        <li>Capacitação do time interno + handover técnico estruturado</li>
+                    </ul>
+                    <div class="package-components">
+                        <span class="component-chip">IBM Power</span>
+                        <span class="component-chip">Microsoft Azure (migração)</span>
+                        <span class="component-chip">Microsoft Dynamics</span>
+                        <span class="component-chip">Roadmap HCF</span>
+                    </div>
+                    <p class="package-recommended">Recomendado para: Indústria, Cooperativas, Setor Público</p>
+                    <a href="pacote-modernizacao-core.html" class="package-link">Ver detalhes do pacote →</a>
                 </div>
             </div>
         </div>
@@ -120,5 +272,13 @@
     <footer class="footer">
         <p>&copy; 2026 HCF. Todos os direitos reservados.</p>
     </footer>
+    <script>
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modernização de Core - Pacote HCF</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function () {
+            const saved = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+        })();
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="hcf.png" alt="HCF" class="logo-img">
+            </a>
+            <nav class="nav-tabs">
+                <a href="index.html" class="nav-tab">Catálogo</a>
+                <a href="index.html" class="nav-tab">Institucional</a>
+                <a href="solucoes.html" class="nav-tab active">Soluções</a>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema">
+                <span class="theme-icon-light">☀️</span>
+                <span class="theme-icon-dark">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <section class="pkg-hero">
+        <div class="container">
+            <p class="pkg-breadcrumb"><a href="solucoes.html">Soluções</a> &rsaquo; Pacotes &rsaquo; Modernização de Core</p>
+            <span class="pkg-hero-tag">Modernização</span>
+            <h1>Modernização de Core</h1>
+            <p class="pkg-pitch">Sair de sistemas legados (mainframe, ERP antigo, IBM Power) sem parar a operação — abordagem estrangulada por ondas, com rollback testado.</p>
+        </div>
+    </section>
+
+    <section class="pkg-section">
+        <div class="container">
+            <h2>Visão geral</h2>
+            <p>O risco de modernizar um core legado raramente é técnico — é operacional. Sistema antigo ainda atende, time interno conhece, mas a integração com APIs modernas é dolorosa, o custo de manutenção sobe ano a ano e contratar gente que entende COBOL ou RPG fica cada vez mais difícil.</p>
+            <p>A HCF aplica o padrão Strangler Fig: o legado continua rodando enquanto novos módulos sobem em Azure ou Dynamics 365, sempre com pareamento de dados bidirecional e cutover de funcionalidade por funcionalidade. Cada onda traz roadmap claro, plano de rollback testado e capacitação do time interno — sem big-bang, sem trauma.</p>
+        </div>
+    </section>
+
+    <section class="pkg-section alt">
+        <div class="container">
+            <h2>Componentes do pacote</h2>
+            <div class="pkg-components-grid">
+                <div class="pkg-component">
+                    <h3>IBM Power (transição)</h3>
+                    <p>Manutenção e otimização do legado durante a transição, garantindo estabilidade enquanto funcionalidades migram para a nova plataforma.</p>
+                </div>
+                <div class="pkg-component">
+                    <h3>Microsoft Azure</h3>
+                    <p>Plataforma destino para cargas migradas: IaaS para lift-and-shift, PaaS para componentes refatorados e Azure Integration Services para conectar legado e novo.</p>
+                </div>
+                <div class="pkg-component">
+                    <h3>Microsoft Dynamics 365</h3>
+                    <p>Substituição modular de ERP/CRM legado, com integração via Dataverse e migração de dados assistida.</p>
+                </div>
+                <div class="pkg-component">
+                    <h3>Roadmap HCF</h3>
+                    <p>Discovery profundo, plano de ondas, runbook de cada cutover, treinamento do time interno e handover técnico estruturado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pkg-section">
+        <div class="container">
+            <h2>Resultados esperados</h2>
+            <div class="pkg-outcomes">
+                <div class="pkg-outcome">
+                    <div class="pkg-outcome-number">0</div>
+                    <p>Janelas de big-bang — cada onda é independente</p>
+                </div>
+                <div class="pkg-outcome">
+                    <div class="pkg-outcome-number">50%+</div>
+                    <p>Redução típica de custo de licenciamento legado em 24 meses</p>
+                </div>
+                <div class="pkg-outcome">
+                    <div class="pkg-outcome-number">100%</div>
+                    <p>Ondas com plano de rollback documentado e testado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pkg-section alt">
+        <div class="container">
+            <h2>Como entregamos</h2>
+            <div class="pkg-phases">
+                <div class="pkg-phase">
+                    <div class="pkg-phase-number"></div>
+                    <div class="pkg-phase-body">
+                        <h3>Discovery profundo (Mês 1)</h3>
+                        <p>Mapeamento de processos, dependências, integrações e classificação de módulos por complexidade e valor de negócio.</p>
+                    </div>
+                </div>
+                <div class="pkg-phase">
+                    <div class="pkg-phase-number"></div>
+                    <div class="pkg-phase-body">
+                        <h3>Roadmap por ondas (Mês 2)</h3>
+                        <p>Definição de sequência, critérios de sucesso por onda, plano de rollback e estimativa de esforço.</p>
+                    </div>
+                </div>
+                <div class="pkg-phase">
+                    <div class="pkg-phase-number"></div>
+                    <div class="pkg-phase-body">
+                        <h3>Execução das ondas (Meses 3-18)</h3>
+                        <p>Migração modular com pareamento de dados, validação em paralelo e cutover funcional por escopo limitado.</p>
+                    </div>
+                </div>
+                <div class="pkg-phase">
+                    <div class="pkg-phase-number"></div>
+                    <div class="pkg-phase-body">
+                        <h3>Decomissionamento &amp; handover (Mês 18+)</h3>
+                        <p>Desligamento controlado do legado por módulo, capacitação final do time interno e handover técnico documentado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pkg-section">
+        <div class="container">
+            <h2>Para quem é</h2>
+            <p>Organizações com sistemas core de mais de 10 anos, custo crescente de manutenção legada, dificuldade de integração com APIs modernas ou risco de obsolescência de conhecimento técnico.</p>
+            <div class="pkg-segments">
+                <span class="component-chip">Indústria</span>
+                <span class="component-chip">Cooperativas</span>
+                <span class="component-chip">Setor Público</span>
+                <span class="component-chip">Finanças</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="pkg-cta">
+        <div class="container">
+            <h2>Pronto para conversar?</h2>
+            <p>Nosso time monta uma proposta customizada para o seu cenário em até 3 dias úteis.</p>
+            <a href="mailto:vendas@hcftec.br?subject=Interesse%20no%20pacote%20Moderniza%C3%A7%C3%A3o%20de%20Core&body=Ol%C3%A1%2C%20gostaria%20de%20receber%20uma%20proposta%20para%20o%20pacote%20Moderniza%C3%A7%C3%A3o%20de%20Core." class="pkg-cta-btn">Falar com vendas →</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 HCF. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+    </script>
+</body>
+</html>

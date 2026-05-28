@@ -131,12 +131,56 @@ const products = [
         ],
         emoji: '📡',
         image: 'images/products/cisco catalyst.jpg'
+    },
+    {
+        id: 101,
+        name: 'Home Office Seguro',
+        category: 'Pacotes',
+        description: 'Trabalho remoto com proteção corporativa, MFA, VPN e EDR — todo o ferramental para operação híbrida com auditoria completa.',
+        emoji: '🛡️',
+        isPackage: true,
+        outcomeTag: 'Segurança',
+        detailUrl: 'pacote-home-office-seguro.html',
+        components: ['Microsoft M365', 'Fortinet SSL-VPN', 'Kaspersky EDR', 'Setup HCF']
+    },
+    {
+        id: 102,
+        name: 'Migração Cloud Híbrida',
+        category: 'Pacotes',
+        description: 'Assessment Well-Architected, AWS Landing Zone, VMware on-prem e Cisco SD-WAN orquestrando workloads críticos sem janela longa.',
+        emoji: '☁️',
+        isPackage: true,
+        outcomeTag: 'Cloud',
+        detailUrl: 'pacote-migracao-cloud-hibrida.html',
+        components: ['AWS', 'VMware Cloud Foundation', 'Cisco SD-WAN', 'Assessment HCF']
+    },
+    {
+        id: 103,
+        name: 'Continuidade & DR',
+        category: 'Pacotes',
+        description: 'Disaster recovery multi-site com RPO < 15min, backup imutável anti-ransomware e simulação real de failover assistida pela HCF.',
+        emoji: '♻️',
+        isPackage: true,
+        outcomeTag: 'Resiliência',
+        detailUrl: 'pacote-continuidade-dr.html',
+        components: ['VMware', 'AWS Backup', 'IBM Storage', 'Runbook HCF']
+    },
+    {
+        id: 104,
+        name: 'Modernização de Core',
+        category: 'Pacotes',
+        description: 'Saída controlada de sistemas legados em ondas, com Azure, Dynamics 365 e plano de rollback testado por escopo.',
+        emoji: '⚙️',
+        isPackage: true,
+        outcomeTag: 'Modernização',
+        detailUrl: 'pacote-modernizacao-core.html',
+        components: ['IBM Power', 'Microsoft Azure', 'Microsoft Dynamics', 'Roadmap HCF']
     }
 ];
 
-// Configuração WhatsApp
-const WHATSAPP_CONFIG = {
-    phoneNumber: '5511999999999', // Substituir com número real
+// Configuração de checkout por email
+const CHECKOUT_CONFIG = {
+    email: 'vendas@hcftec.br',
     companyName: 'HCF'
 };
 
@@ -192,26 +236,46 @@ function renderCatalog() {
     const filteredProducts = getFilteredProducts();
     filteredProducts.forEach(product => {
         const productCard = document.createElement('div');
-        productCard.className = 'product-card';
-        const imageContent = product.image
-            ? `<img src="${product.image}" alt="${product.name}" class="product-img">`
-            : `<div class="product-emoji">${product.emoji}</div>`;
-        productCard.innerHTML = `
-            <div class="product-image">${imageContent}</div>
-            <div class="product-info">
-                <h3 class="product-name">${product.name}</h3>
-                <p class="product-description">${product.description}</p>
-                <div class="product-price">R$ ${product.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
-                <div class="product-buttons">
-                    <button class="btn-details" data-id="${product.id}">Ver Detalhes</button>
-                    <button class="btn-add-cart" data-id="${product.id}">Adicionar</button>
-                </div>
-            </div>
-        `;
+        productCard.className = product.isPackage ? 'product-card package-product-card' : 'product-card';
 
-        // Event listeners para botões do card
-        productCard.querySelector('.btn-details').addEventListener('click', () => openModal(product.id));
-        productCard.querySelector('.btn-add-cart').addEventListener('click', () => addToCart(product.id));
+        if (product.isPackage) {
+            const chips = product.components.map(c => `<span class="component-chip">${c}</span>`).join('');
+            productCard.innerHTML = `
+                <div class="product-image package-product-image">
+                    <div class="product-emoji">${product.emoji}</div>
+                </div>
+                <div class="product-info">
+                    <span class="package-outcome-tag">${product.outcomeTag}</span>
+                    <h3 class="product-name">${product.name}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <div class="package-components">${chips}</div>
+                    <div class="product-buttons">
+                        <a href="${product.detailUrl}" class="btn-package-link">Ver Pacote</a>
+                    </div>
+                </div>
+            `;
+        } else {
+            const imageContent = product.image
+                ? `<img src="${product.image}" alt="${product.name}" class="product-img">`
+                : `<div class="product-emoji">${product.emoji}</div>`;
+            productCard.innerHTML = `
+                <div class="product-image">${imageContent}</div>
+                <div class="product-info">
+                    <h3 class="product-name">${product.name}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <div class="product-price">R$ ${product.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
+                    <div class="product-buttons">
+                        <button class="btn-details" data-id="${product.id}">Ver Detalhes</button>
+                        <button class="btn-add-cart" data-id="${product.id}">Adicionar</button>
+                    </div>
+                </div>
+            `;
+            productCard.querySelector('.btn-details').addEventListener('click', () => openModal(product.id));
+            productCard.querySelector('.btn-add-cart').addEventListener('click', (e) => {
+                addToCart(product.id);
+                flashAddToCart(e.currentTarget);
+            });
+        }
 
         productsGrid.appendChild(productCard);
     });
@@ -319,6 +383,7 @@ function updateCartCount() {
 
 // Adicionar ao carrinho
 function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
     const existingItem = cart.find(item => item.id === productId);
 
     if (existingItem) {
@@ -329,6 +394,60 @@ function addToCart(productId) {
 
     updateCartCount();
     renderCart();
+
+    if (product) {
+        showCartToast(`${product.name} adicionado ao carrinho`, 'success');
+    }
+    pulseCart();
+}
+
+// Toast de feedback
+let toastTimer = null;
+function showCartToast(message, type = 'success') {
+    let toast = document.getElementById('cart-toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'cart-toast';
+        toast.className = 'cart-toast';
+        document.body.appendChild(toast);
+    }
+    const icon = type === 'error' ? '⚠️' : '✓';
+    toast.innerHTML = `<span class="cart-toast-icon">${icon}</span><span class="cart-toast-msg">${message}</span><button class="cart-toast-action" id="cart-toast-action">Ver carrinho</button>`;
+    toast.className = `cart-toast show ${type}`;
+
+    const actionBtn = toast.querySelector('#cart-toast-action');
+    actionBtn.addEventListener('click', () => {
+        hideCartToast();
+        if (!isCartOpen) toggleCart();
+    });
+
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(hideCartToast, 3200);
+}
+
+function hideCartToast() {
+    const toast = document.getElementById('cart-toast');
+    if (toast) toast.classList.remove('show');
+}
+
+// Pulse no ícone do carrinho
+function pulseCart() {
+    const cartBtn = document.getElementById('cart-btn');
+    if (!cartBtn) return;
+    cartBtn.classList.remove('cart-pulse');
+    void cartBtn.offsetWidth; // reflow
+    cartBtn.classList.add('cart-pulse');
+}
+
+// Flash visual no botão "Adicionar"
+function flashAddToCart(btn) {
+    const original = btn.textContent;
+    btn.classList.add('btn-added');
+    btn.textContent = '✓ Adicionado';
+    setTimeout(() => {
+        btn.classList.remove('btn-added');
+        btn.textContent = original;
+    }, 1200);
 }
 
 // Remover do carrinho
@@ -352,17 +471,17 @@ function updateQuantity(productId, delta) {
     }
 }
 
-// Gerar mensagem WhatsApp
-function generateWhatsAppMessage() {
-    let message = `Olá! Gostaria de pedir os seguintes itens:\n\n`;
+// Gerar corpo de email com itens do carrinho
+function generateEmailBody() {
+    let body = `Olá, time HCF!\n\nGostaria de uma cotação para os seguintes itens:\n\n`;
 
     cart.forEach(item => {
         const product = products.find(p => p.id === item.id);
         const itemTotal = product.price * item.quantity;
-        message += `${product.name}\n`;
-        message += `  Quantidade: ${item.quantity}\n`;
-        message += `  Preço unitário: R$ ${product.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}\n`;
-        message += `  Subtotal: R$ ${itemTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}\n\n`;
+        body += `• ${product.name}\n`;
+        body += `    Quantidade: ${item.quantity}\n`;
+        body += `    Preço unitário: R$ ${product.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}\n`;
+        body += `    Subtotal: R$ ${itemTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}\n\n`;
     });
 
     const total = cart.reduce((sum, item) => {
@@ -370,22 +489,23 @@ function generateWhatsAppMessage() {
         return sum + (product.price * item.quantity);
     }, 0);
 
-    message += `Total: R$ ${total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}\n\n`;
-    message += `Por favor, confirme a disponibilidade e forneça mais detalhes sobre a entrega.`;
+    body += `Total estimado: R$ ${total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}\n\n`;
+    body += `Aguardo confirmação de disponibilidade, prazo de entrega e condições comerciais.\n\nObrigado!`;
 
-    return encodeURIComponent(message);
+    return encodeURIComponent(body);
 }
 
-// Abrir WhatsApp com carrinho pré-preenchido
-function openWhatsAppCheckout() {
+// Abrir cliente de email com carrinho pré-preenchido
+function openEmailCheckout() {
     if (cart.length === 0) {
-        alert('Seu carrinho está vazio!');
+        showCartToast('Seu carrinho está vazio!', 'error');
         return;
     }
 
-    const message = generateWhatsAppMessage();
-    const whatsappURL = `https://wa.me/${WHATSAPP_CONFIG.phoneNumber}?text=${message}`;
-    window.open(whatsappURL, '_blank');
+    const subject = encodeURIComponent('Cotação de produtos — Carrinho HCF');
+    const body = generateEmailBody();
+    const mailtoURL = `mailto:${CHECKOUT_CONFIG.email}?subject=${subject}&body=${body}`;
+    window.location.href = mailtoURL;
 }
 
 // Abrir/fechar carrinho
@@ -420,8 +540,15 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('cart-btn').addEventListener('click', toggleCart);
     document.getElementById('cart-close').addEventListener('click', closeCart);
 
-    // Event listener do botão WhatsApp
-    document.getElementById('btn-whatsapp').addEventListener('click', openWhatsAppCheckout);
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+    });
+
+    // Event listener do botão de checkout por email
+    document.getElementById('btn-checkout').addEventListener('click', openEmailCheckout);
 
     // Event delegation para modal (previne memory leak)
     const modalOverlay = document.getElementById('modal-overlay');
