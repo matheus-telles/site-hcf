@@ -23,7 +23,8 @@
                 <img src="hcf.png" alt="HCF" class="logo-img">
             </a>
             <nav class="nav-tabs">
-                <button class="nav-tab active" data-tab="catalogo">Catálogo</button>
+                <button class="nav-tab active" data-tab="inicio">Início</button>
+                <button class="nav-tab" data-tab="catalogo">Catálogo</button>
                 <button class="nav-tab" data-tab="institucional">Institucional</button>
                 <a href="solucoes.html" class="nav-tab">Soluções</a>
             </nav>
@@ -48,8 +49,85 @@
 
     <!-- Main Content -->
     <main class="main-content">
+        <!-- Aba Início (landing) -->
+        <section id="tab-inicio" class="tab-content active">
+            <!-- Hero -->
+            <section class="home-hero">
+                <div class="home-hero-content">
+                    <h1>Soluções de TI ponta a ponta para sua empresa</h1>
+                    <p>Infraestrutura, cloud, continuidade e segurança — projetadas, integradas e suportadas pela HCF. Um marketplace de soluções, do produto ao projeto.</p>
+                    <div class="home-hero-actions">
+                        <button class="btn-on-dark" data-goto-tab="institucional">Falar com especialista</button>
+                        <button class="btn-outline" data-goto-tab="catalogo">Ver catálogo</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pilares de Solução -->
+            <section class="solutions-section pilares-section">
+                <div class="container">
+                    <h2>Pacotes de Solução</h2>
+                    <p class="section-subtitle">Combos cross-vendor prontos, montados e suportados pela HCF para resultados de negócio.</p>
+                    <div class="solutions-grid pilares-grid">
+                        <a class="solution-card pilar-card" href="pacote-modernizacao-core.html">
+                            <span class="solution-category">Modernização</span>
+                            <h3>Modernização de Core</h3>
+                            <p>Saída controlada de sistemas legados em ondas, com Azure, Dynamics 365 e rollback testado.</p>
+                            <span class="pilar-link">Saiba mais →</span>
+                        </a>
+                        <a class="solution-card pilar-card" href="pacote-migracao-cloud-hibrida.html">
+                            <span class="solution-category">Cloud</span>
+                            <h3>Migração Cloud Híbrida</h3>
+                            <p>Assessment Well-Architected, AWS Landing Zone e SD-WAN orquestrando workloads críticos.</p>
+                            <span class="pilar-link">Saiba mais →</span>
+                        </a>
+                        <a class="solution-card pilar-card" href="pacote-continuidade-dr.html">
+                            <span class="solution-category">Resiliência</span>
+                            <h3>Continuidade &amp; DR</h3>
+                            <p>Disaster recovery multi-site com RPO &lt; 15min e backup imutável anti-ransomware.</p>
+                            <span class="pilar-link">Saiba mais →</span>
+                        </a>
+                        <a class="solution-card pilar-card" href="pacote-home-office-seguro.html">
+                            <span class="solution-category">Segurança</span>
+                            <h3>Home Office Seguro</h3>
+                            <p>Trabalho remoto com MFA, VPN e EDR — operação híbrida com auditoria completa.</p>
+                            <span class="pilar-link">Saiba mais →</span>
+                        </a>
+                    </div>
+                    <div class="section-footer-link">
+                        <a href="solucoes.html">Ver todas as soluções →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Catálogo em destaque -->
+            <section class="catalogo-destaque">
+                <div class="container">
+                    <h2>Marketplace de produtos</h2>
+                    <p class="section-subtitle">Hardware, software, redes e licenciamento das principais fabricantes — com cotação rápida.</p>
+                    <div class="catalogo-destaque-chips">
+                        <button class="destaque-chip" data-goto-tab="catalogo">Hardware</button>
+                        <button class="destaque-chip" data-goto-tab="catalogo">Software</button>
+                        <button class="destaque-chip" data-goto-tab="catalogo">Network</button>
+                        <button class="destaque-chip" data-goto-tab="catalogo">Notebooks</button>
+                        <button class="destaque-chip" data-goto-tab="catalogo">Acessórios</button>
+                    </div>
+                    <button class="btn-primary" data-goto-tab="catalogo">Ver catálogo completo</button>
+                </div>
+            </section>
+
+            <!-- CTA final -->
+            <section class="home-cta">
+                <div class="container">
+                    <h2>Pronto para modernizar sua TI?</h2>
+                    <p>Converse com nossos especialistas e monte a solução ideal para o seu negócio.</p>
+                    <button class="btn-primary btn-on-dark" data-goto-tab="institucional">Falar com especialista</button>
+                </div>
+            </section>
+        </section>
+
         <!-- Aba Catálogo -->
-        <section id="tab-catalogo" class="tab-content active">
+        <section id="tab-catalogo" class="tab-content">
             <section class="catalog">
                 <h2>Catálogo de Produtos</h2>
                 <div class="category-tabs-container">

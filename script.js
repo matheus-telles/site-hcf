@@ -591,23 +591,29 @@ document.addEventListener('DOMContentLoaded', () => {
         e.stopPropagation();
     });
 
-    // Navegação entre abas
-    document.querySelectorAll('.nav-tab').forEach(tab => {
-        tab.addEventListener('click', (e) => {
-            const tabName = e.target.dataset.tab;
+    // Navegação entre abas (header tabs + atalhos internos da landing)
+    document.querySelectorAll('.nav-tab[data-tab]').forEach(tab => {
+        tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+    });
 
-            // Remove active de todos os tabs
-            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-
-            // Adiciona active ao tab clicado
-            e.target.classList.add('active');
-            document.getElementById(`tab-${tabName}`).classList.add('active');
-
-            // Fecha o carrinho se estiver aberto
-            if (isCartOpen) {
-                closeCart();
-            }
-        });
+    // Botões/chips dentro do conteúdo que levam a outra aba
+    document.querySelectorAll('[data-goto-tab]').forEach(el => {
+        el.addEventListener('click', () => switchTab(el.dataset.gotoTab));
     });
 });
+
+// Troca a aba ativa e sincroniza o estado do header
+function switchTab(tabName) {
+    const target = document.getElementById(`tab-${tabName}`);
+    if (!target) return;
+
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+    const headerTab = document.querySelector(`.nav-tab[data-tab="${tabName}"]`);
+    if (headerTab) headerTab.classList.add('active');
+    target.classList.add('active');
+
+    if (isCartOpen) closeCart();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
